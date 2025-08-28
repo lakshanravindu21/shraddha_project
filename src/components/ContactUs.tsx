@@ -3,7 +3,7 @@ import React from "react";
 
 const ContactUs = () => {
     return (
-        <section className="bg-[#f7f7f7] rounded-2xl border border-[#FFD700] p-8 md:p-12 mx-auto my-8 max-w-6xl shadow-sm">
+        <section className="bg-[#f7f7f7] rounded-2xl border border-[#FFD700] p-8 md:p-12 mx-auto my-8 max-w-[1641px] w-full shadow-sm">
             <div className="flex flex-col md:flex-row gap-8">
                 {/* Left Side: Contact Info */}
                 <div className="md:w-1/2 flex flex-col justify-center">

@@ -7,7 +7,7 @@ import { FaFacebookF, FaTwitter, FaInstagram, FaTelegramPlane } from 'react-icon
 export default function Footer() {
     return (
         <footer className="text-white pt-10 pb-4 px-4 md:px-12" style={{ background: 'linear-gradient(90deg, #232526 0%, #414345 100%)' }}>
-            <div className="max-w-7xl mx-auto">
+            <div className=" mx-8.5 ">
                 <div className="flex flex-col md:flex-row justify-between gap-8 md:gap-0">
                     {/* Logo & Hours */}
                     <div className="md:w-1/5 flex flex-col items-start">

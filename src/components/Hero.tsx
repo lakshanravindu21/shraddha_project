@@ -12,13 +12,17 @@ export default function Hero() {
                 className='relative text-white pt-[12px] sm:pt-[34px] px-[15px] sm:px-[45px] min-h-screen pb-[120px] sm:pb-[160px] lg:pb-[180px]'>
                 <Header />
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-2 ms-0 md:ms-9 items-center h-full mb-6 sm:mb-0 sm:mt-16">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-2 ms-0 md:ms-9 items-center h-full mb-6 sm:mb-0 sm:mt-28">
                     <div>
-                        <h6 className='text-[64px] font-bold '>Explore Latter-day Saint Temples Across the United States</h6>
-                        <p className='text-[22px]'>Lorem ipsum dolor sit amet consectetur. Amet risus rhoncus sodales vulputate arcu. Erat mi dolor vitae in.
+                        <h6 className='font-bold text-[32px] sm:text-[48px] lg:text-[64px] leading-tight'>
+                            Explore Latter-day Saint Temples Across the United States
+                        </h6>
+                        <p className='text-[16px] sm:text-[18px] lg:text-[22px] mt-3'>
+                            Lorem ipsum dolor sit amet consectetur. Amet risus rhoncus sodales vulputate arcu. Erat mi dolor vitae in.
                             Consequat pellentesque sed vitae purus erat id in pretium. Sed cras fringilla lacinia tortor diam pretium.
-                            Ipsum amet faucibus tortor vulputate elementum tortor e</p>
-                        <button className='bg-[#191D23] text-[16px] px-9.5 mt-7 py-3.5 rounded-[25px]' >Explore the Map</button>
+                            Ipsum amet faucibus tortor vulputate elementum tortor e
+                        </p>
+                        <button className='bg-[#191D23] text-[14px] sm:text-[16px] px-6 sm:px-9.5 mt-7 py-2.5 sm:py-3.5 rounded-[25px]'>Explore the Map</button>
                     </div>
                 </div>
                 {/* Overlayed input div at the end of hero image section */}

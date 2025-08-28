@@ -5,7 +5,7 @@ import image2 from '../components/asserts/images/mostPopularImg-2.jpg'
 export default function MostPopularTeamples() {
     return (
         <>
-            <div className='p-4 sm:p-6 lg:p-8 my-8'>
+            <section className='p-4 sm:p-6 lg:p-8 my-8 max-w-[1641px] mx-auto w-full'>
                 <h4
                     className="text-4xl md:text-6xl font-[700] text-center underline underline-offset-[10px] decoration-yellow-400 decoration-4"
                 >
@@ -47,7 +47,7 @@ export default function MostPopularTeamples() {
                         style={{ backgroundImage: `url(${image2.src})` }}
                     />
                 </div>
-            </div>
+            </section>
         </>
     )
 }
