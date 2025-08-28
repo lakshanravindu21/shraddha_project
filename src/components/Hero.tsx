@@ -8,7 +8,7 @@ export default function Hero() {
     return (
         <>
 
-            <div style={{ backgroundImage: `url(${heroImg.src})`, minHeight: "100vh", backgroundPosition: 'center', backgroundSize: 'cover' }}
+            <div id="home" style={{ backgroundImage: `url(${heroImg.src})`, minHeight: "100vh", backgroundPosition: 'center', backgroundSize: 'cover' }}
                 className='relative text-white pt-[12px] sm:pt-[34px] px-[15px] sm:px-[45px] min-h-screen pb-[120px] sm:pb-[160px] lg:pb-[180px]'>
                 <Header />
 

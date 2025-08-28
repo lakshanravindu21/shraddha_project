@@ -3,10 +3,10 @@ import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { MdCall } from 'react-icons/md';
 
 const navigation = [
-    { name: 'Home', href: '#', current: true },
-    { name: 'About Us', href: '#', current: false },
-    { name: 'Map', href: '#', current: false },
-    { name: 'Contact Us', href: '#', current: false },
+    { name: 'Home', href: '#home', current: true },
+    { name: 'About Us', href: '#about', current: false },
+    { name: 'Map', href: '#mps', current: false },
+    { name: 'Contact Us', href: '#contact-us', current: false },
 ]
 
 interface NavigationItem {

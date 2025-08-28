@@ -5,7 +5,7 @@ import image2 from '../components/asserts/images/mostPopularImg-2.jpg'
 export default function MostPopularTeamples() {
     return (
         <>
-            <section className='p-4 sm:p-6 lg:p-8 my-8 max-w-[1641px] mx-auto w-full'>
+            <section id='mps' className='p-4 sm:p-6 lg:p-8 my-8 max-w-[1641px] mx-auto w-full'>
                 <h4
                     className="text-4xl md:text-6xl font-[700] text-center underline underline-offset-[10px] decoration-yellow-400 decoration-4"
                 >

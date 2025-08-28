@@ -4,7 +4,7 @@ import React from 'react';
 export default function About() {
     return (
         <>
-            <div className="lg:grid grid-cols-2 flex-row py-6 sm:mt-16 ">
+            <div id="about" className="lg:grid grid-cols-2 flex-row py-6 sm:mt-16 ">
                 <div>
                     <div className="w-full flex mt-6">
                         {/* Left line and arrowhead (points left) */}

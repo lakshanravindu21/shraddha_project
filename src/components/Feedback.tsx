@@ -27,7 +27,7 @@ export default function Feedback() {
     ];
 
     return (
-        <section className="p-4 sm:p-6 lg:p-8 my-8 max-w-[1641px] mx-auto w-full">
+        <section id='feedback' className="p-4 sm:p-6 lg:p-8 my-8 max-w-[1641px] mx-auto w-full">
             <h2 className="text-center text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 lg:mb-4 underline underline-offset-[10px] decoration-[#FFC600] decoration-3">What our Users say about us</h2>
 
             <div className="relative flex items-center justify-center lg:mt-10">

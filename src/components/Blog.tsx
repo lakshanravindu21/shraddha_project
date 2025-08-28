@@ -43,7 +43,7 @@ const initailData1 = [
 
 export default function Blog() {
     return (
-        <section className="p-4 sm:p-6 lg:p-8 my-8">
+        <section id='blog' className="p-4 sm:p-6 lg:p-8 my-8">
             <h2 className="text-center text-3xl sm:text-4xl font-bold mb-6 sm:mb-10">Blogs</h2>
             <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 max-w-[1641px] mx-auto w-full">
                 {/* Main Blogs */}
