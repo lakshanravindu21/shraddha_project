@@ -8,7 +8,8 @@ import MostPopularTeamples from '../MostPopularTeamples'
 
 export default function Home() {
     return (
-        <>
+
+        <div className="bg-white m-0 p-0">
             <Hero />
             <About />
             <MostPopularTeamples />
@@ -16,6 +17,7 @@ export default function Home() {
             <Feedback />
             <ContactUs />
             <Footer />
-        </>
+        </div>
+
     )
 }
