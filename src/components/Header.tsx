@@ -1,6 +1,7 @@
-import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
-import { MdCall } from 'react-icons/md';
+import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react'
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import { MdCall } from 'react-icons/md'
+import Link from "next/link";
 
 const navigation = [
     { name: 'Home', href: '#home', current: true },
@@ -21,8 +22,16 @@ function classNames(...classes: (string | undefined | false | null)[]): string {
 
 const rightNavItemsDesign =
     <>
-        <button className='font-[16px] flex text-white items-center py-2' > <MdCall className='me-1' /> (+1) 840 841 25 69</button>
-        <button className='bg-[#191D23] px-8 py-2 text-white rounded-[20px] font-[16px]' >Contact Us</button>
+        <button className='font-[16px] flex text-white items-center py-2'>
+            <MdCall className='me-1' /> (+1) 840 841 25 69
+        </button>
+
+        {/* Updated Contact Us button */}
+        <Link href="/contact">
+            <button className='bg-[#191D23] px-8 py-2 text-white rounded-[20px] font-[16px]'>
+                Contact Us
+            </button>
+        </Link>
     </>
 
 export default function Example() {
@@ -86,8 +95,6 @@ export default function Example() {
                     </div>
                     <div className="hidden lg:flex justify-centerw gap-5 text-white items-center">
                         {rightNavItemsDesign}
-                        {/* <button className='font-[16px] flex items-center' > <MdCall className='me-1' /> (+1) 840 841 25 69</button>
-                            <button className='bg-[#191D23] px-8 py-2 rounded-[20px] font-[16px]' >Contact Us</button> */}
                     </div>
 
                 </div>
@@ -112,10 +119,8 @@ export default function Example() {
                         </DisclosureButton>
                     ))}
                     {rightNavItemsDesign}
-
                 </div>
             </DisclosurePanel>
         </Disclosure>
-
     )
 }
