@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import emailjs from "emailjs-com";
 
 export default function ContactUs() {
@@ -13,6 +13,14 @@ export default function ContactUs() {
   });
 
   const [status, setStatus] = useState("");
+
+  // ✅ Auto-hide status after 2 seconds
+  useEffect(() => {
+    if (status) {
+      const timer = setTimeout(() => setStatus(""), 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [status]);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -38,21 +46,20 @@ export default function ContactUs() {
 
     setStatus("Sending...");
 
-    // Updated templateParams
     const templateParams = {
       from_name: `${formData.firstName} ${formData.lastName}`,
-      reply_to: formData.email,       // Reply-to in Gmail
-      sender_email: formData.email,   // Displayed in email body
+      reply_to: formData.email,
+      sender_email: formData.email,
       number: formData.number,
       message: formData.message,
     };
 
     emailjs
       .send(
-        "service_nosgwjs",       // Your Service ID
-        "template_ippvcn8",      // Your Template ID
+        "service_nosgwjs",
+        "template_ippvcn8",
         templateParams,
-        "pNgI-RySmxReP-45x"     // Your Public Key
+        "pNgI-RySmxReP-45x"
       )
       .then(() => {
         setStatus("✅ Message sent successfully!");
@@ -79,37 +86,62 @@ export default function ContactUs() {
         <div className="md:w-1/2 flex flex-col justify-center">
           <h2 className="text-4xl font-bold mb-4">Contact Us</h2>
           <p className="text-gray-400 mb-8">
-            We are committed to processing the information in order to contact you and talk about your project.
+            We are committed to processing the information in order to contact
+            you and talk about your project.
           </p>
           <div className="space-y-6">
             {/* Email */}
             <div className="flex items-center gap-3">
               <span className="text-orange-500">
-                <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                  <rect x="3" y="5" width="18" height="14" rx="2"/>
-                  <polyline points="3 7 12 13 21 7"/>
+                <svg
+                  width="24"
+                  height="24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                >
+                  <rect x="3" y="5" width="18" height="14" rx="2" />
+                  <polyline points="3 7 12 13 21 7" />
                 </svg>
               </span>
-              <span className="text-base text-gray-700">example@teamwebflow.com</span>
+              <span className="text-base text-gray-700">
+                example@teamwebflow.com
+              </span>
             </div>
             {/* Location */}
             <div className="flex items-start gap-3">
               <span className="text-orange-500 mt-1">
-                <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                  <path d="M12 21c-4.418 0-8-4.03-8-9a8 8 0 1 1 16 0c0 4.97-3.582 9-8 9z"/>
-                  <circle cx="12" cy="12" r="3"/>
+                <svg
+                  width="24"
+                  height="24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M12 21c-4.418 0-8-4.03-8-9a8 8 0 1 1 16 0c0 4.97-3.582 9-8 9z" />
+                  <circle cx="12" cy="12" r="3" />
                 </svg>
               </span>
               <span className="text-base text-gray-700">
-                4074 Ebert Summit Suite 375<br/>
+                4074 Ebert Summit Suite 375
+                <br />
                 Lake Leonardchester
               </span>
             </div>
             {/* Phone */}
             <div className="flex items-center gap-3">
               <span className="text-orange-500">
-                <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                  <path d="M22 16.92V19a2 2 0 0 1-2.18 2A19.72 19.72 0 0 1 3 5.18 2 2 0 0 1 5 3h2.09a2 2 0 0 1 2 1.72c.13 1.13.37 2.24.72 3.32a2 2 0 0 1-.45 2.11l-1.27 1.27a16 16 0 0 0 6.29 6.29l1.27-1.27a2 2 0 0 1 2.11-.45c1.08.35 2.19.59 3.32.72A2 2 0 0 1 22 16.92z"/>
+                <svg
+                  width="24"
+                  height="24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M22 16.92V19a2 2 0 0 1-2.18 2A19.72 19.72 0 0 1 3 5.18 2 2 0 0 1 5 3h2.09a2 2 0 0 1 2 1.72c.13 1.13.37 2.24.72 3.32a2 2 0 0 1-.45 2.11l-1.27 1.27a16 16 0 0 0 6.29 6.29l1.27-1.27a2 2 0 0 1 2.11-.45c1.08.35 2.19.59 3.32.72A2 2 0 0 1 22 16.92z" />
                 </svg>
               </span>
               <span className="text-base text-gray-700">+44 123 654 7890</span>

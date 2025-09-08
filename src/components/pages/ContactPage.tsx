@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 // Already created components
-import Header from "../Header";
+import BlackHeader from "../BlackHeader";
 import Footer from "../Footer";
 import ContactUs from "../ContactUs";
 
@@ -15,10 +15,10 @@ const ContactPage = () => {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Header */}
-      <Header />
+      <BlackHeader />
 
       {/* Banner */}
-      <div className="relative w-full h-[300px] md:h-[400px]">
+      <div className="relative w-full h-[300px] md:h-[550px]">
         <Image
           src={contactBanner}
           alt="Contact Banner"

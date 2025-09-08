@@ -39,12 +39,12 @@ const templeIcon = new L.Icon({
   iconUrl: "https://cdn-icons-png.flaticon.com/512/2331/2331945.png",
   iconSize: [32, 32],
   iconAnchor: [16, 32],
+  popupAnchor: [0, -32],
 });
 
 const Map: React.FC<MapProps> = ({ searchFilters = null }) => {
   const [selectedTemple, setSelectedTemple] = useState<Temple | null>(null);
   const [showModal, setShowModal] = useState(false);
-
   const [loadingKML, setLoadingKML] = useState(true);
   const [kmlError, setKmlError] = useState<string | null>(null);
 
@@ -163,7 +163,9 @@ const Map: React.FC<MapProps> = ({ searchFilters = null }) => {
   const FlyToTemple: React.FC<{ coordinates: [number, number] }> = ({ coordinates }) => {
     const map = useMap();
     useEffect(() => {
-      if (coordinates) map.flyTo(coordinates, 6, { duration: 1.2 });
+      if (coordinates && coordinates.length === 2) {
+        map.flyTo(coordinates, 10, { duration: 1.2 });
+      }
     }, [coordinates, map]);
     return null;
   };
@@ -172,16 +174,23 @@ const Map: React.FC<MapProps> = ({ searchFilters = null }) => {
     const map = useMap();
 
     useEffect(() => {
+      let kmlLayer: L.Layer | null = null;
+      
       setLoadingKML(true);
       setKmlError(null);
 
       try {
-        const kmlLayer = omnivore.kml("/cb_2024_us_state_500k.kml")
-          .on("ready", () => {
+        kmlLayer = omnivore.kml("/cb_2024_us_state_500k.kml")
+          .on("ready", function() {
             setLoadingKML(false);
-            map.fitBounds(kmlLayer.getBounds(), { padding: [20, 20], maxZoom: 5 }); // zooms in more
+            if (kmlLayer) {
+              map.fitBounds((kmlLayer as any).getBounds(), { 
+                padding: [20, 20], 
+                maxZoom: 5 
+              });
+            }
           })
-          .on("error", () => {
+          .on("error", function() {
             setLoadingKML(false);
             setKmlError("Failed to load KML boundaries.");
           });
@@ -194,22 +203,25 @@ const Map: React.FC<MapProps> = ({ searchFilters = null }) => {
         });
 
         kmlLayer.addTo(map);
-
-        return () => {
-          map.removeLayer(kmlLayer);
-        };
       } catch (err) {
+        console.error("KML Layer Error:", err);
         setLoadingKML(false);
         setKmlError("Error loading KML file.");
       }
+
+      return () => {
+        if (kmlLayer && map.hasLayer(kmlLayer)) {
+          map.removeLayer(kmlLayer);
+        }
+      };
     }, [map]);
 
     return null;
   };
 
-  // Tighter continental US bounds (zoomed in more)
+  // Tighter continental US bounds
   const usaBounds: L.LatLngBoundsExpression = [
-    [25, -124], // Southwest corner (moved slightly inward)
+    [25, -124], // Southwest corner
     [49, -67],  // Northeast corner
   ];
 
@@ -301,7 +313,7 @@ const Map: React.FC<MapProps> = ({ searchFilters = null }) => {
         {/* Map */}
         {!showModal && (
           <motion.div
-            className="lg:col-span-2 bg-white rounded-2xl shadow-xl border border-gray-200 overflow-hidden h-[520px] lg:h-[100%]"
+            className="lg:col-span-2 bg-white rounded-2xl shadow-xl border border-gray-200 overflow-hidden h-[520px] lg:h-[600px]"
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
@@ -320,7 +332,7 @@ const Map: React.FC<MapProps> = ({ searchFilters = null }) => {
             )}
 
             <MapContainer
-              bounds={usaBounds} // tighter zoom
+              bounds={usaBounds}
               scrollWheelZoom
               className="w-full h-full leaflet-container"
             >
@@ -352,6 +364,11 @@ const Map: React.FC<MapProps> = ({ searchFilters = null }) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0, transition: { duration: 0.3 } }}
+            onClick={(e) => {
+              if (e.target === e.currentTarget) {
+                closeModal();
+              }
+            }}
           >
             <motion.div
               className="bg-white rounded-2xl max-w-4xl w-full p-8 relative shadow-2xl overflow-y-auto max-h-[90vh] border border-gray-100"
@@ -367,7 +384,8 @@ const Map: React.FC<MapProps> = ({ searchFilters = null }) => {
             >
               <button
                 onClick={closeModal}
-                className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl"
+                className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl transition-colors duration-200 z-10"
+                aria-label="Close modal"
               >
                 ✕
               </button>
@@ -375,6 +393,10 @@ const Map: React.FC<MapProps> = ({ searchFilters = null }) => {
                 src={selectedTemple.image || "https://via.placeholder.com/800x400"}
                 alt={selectedTemple.name}
                 className="w-full h-72 sm:h-96 object-cover rounded-lg mb-6 shadow-lg hover:scale-105 transition-transform duration-300"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.src = "https://via.placeholder.com/800x400?text=Temple+Image";
+                }}
               />
               <h3 className="text-3xl sm:text-4xl font-extrabold mb-3 text-gray-900">
                 {selectedTemple.name}
