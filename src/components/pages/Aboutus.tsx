@@ -12,15 +12,17 @@ import Image1 from "../asserts/images/aboutusImages/image1.jpg";
 import Image2 from "../asserts/images/aboutusImages/image2.jpg";
 import Image3 from "../asserts/images/aboutusImages/image3.jpg";
 
-import Header from "../Header";
+import Header from "../BlackHeader";
 import Footer from "../Footer";
+import Link from "next/link";
+
 
 
 export default function AboutPage() {
   return (
     <>
       <Header />
-      <main className=" min-h-screen bg-white text-gray-900">
+      <main id="about" className=" min-h-screen bg-white text-gray-900">
 
         <div className="relative w-full h-76 mb-12">
           <img
@@ -29,10 +31,16 @@ export default function AboutPage() {
             className="w-full h-full object-cover"
           />
 
-          <div className="absolute top-[335px] left-[45px] w-[162px] h-[20px] font-raleway font-semibold text-[15px] leading-[20px] uppercase text-black">
-            HOME &gt; ABOUT US
+          {/* Breadcrumb */}
+          <div className="bg-gray-100 py-4 px-6 md:px-12">
+            <nav className="text-gray-600 text-sm">
+              <Link href="/" className="hover:text-orange-500">
+                HOME
+              </Link>{" "}
+              <span className="mx-2">&gt;</span>
+              <span className="text-orange-500 font-semibold">ABOUT US</span>
+            </nav>
           </div>
-
         </div>
 
         <section className="w-full max-w-[1200px] min-h-[700px] mx-auto px-6 py-12 flex flex-col md:flex-row justify-between items-start gap-8 relative">
@@ -208,7 +216,7 @@ export default function AboutPage() {
 
 
               <span className="hidden md:block absolute right-0 top-[220px] w-0 h-0 border-t-8 border-b-8 border-l-8 border-transparent border-l-yellow-500">
-                <span className="absolute top-[60%] left-[30%] w-[190px] h-[2px] bg-yellow-500"></span>
+                <span className="absolute top-[60%] left-[30%] w-[140px] h-[2px] bg-yellow-500"></span>
               </span>
 
             </h2>
@@ -242,8 +250,8 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-3 gap-6">
-
+          {/* Responsive Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <div className="relative rounded-lg overflow-hidden shadow-lg">
               <img
                 src={newyork1.src}
@@ -266,8 +274,7 @@ export default function AboutPage() {
               </div>
             </div>
 
-
-            <div className="relative rounded-lg overflow-hidden shadow-lg row-span-2">
+            <div className="relative rounded-lg overflow-hidden shadow-lg lg:row-span-2">
               <img
                 src={chicago.src}
                 alt="Chicago Temple"
@@ -300,8 +307,6 @@ export default function AboutPage() {
               </div>
             </div>
 
-
-
             <div className="relative rounded-lg overflow-hidden shadow-lg">
               <img
                 src={newyork4.src}
@@ -312,7 +317,6 @@ export default function AboutPage() {
                 New York <br /> 28 Temples
               </div>
             </div>
-
 
             <div className="relative rounded-lg overflow-hidden shadow-lg">
               <img
@@ -358,6 +362,9 @@ export default function AboutPage() {
                 <h3 className="text-lg font-semibold">Lorem ipsum dolor sit amet consectetur.</h3>
                 <p className="text-sm opacity-80">
                   Facilisi quisque magna praesent quisque arcu felis ornare in.
+                  <span className="absolute bottom-4 right-4 flex items-center justify-center w-8 h-8 bg-white/20 rounded-[18.47px]">
+                    ➜
+                  </span>
                 </p>
               </div>
             </div>
@@ -371,7 +378,11 @@ export default function AboutPage() {
               />
               <div className="absolute bottom-0 left-0 w-full p-3 bg-gradient-to-t from-black/60 to-transparent text-white">
                 <h3 className="text-sm font-semibold">Lorem ipsum dolor sit amet</h3>
-                <p className="text-xs opacity-80">Facilisi quisque magna praesent.</p>
+                <p className="text-xs opacity-80">Facilisi quisque magna praesent.
+                  <span className="absolute bottom-4 right-4 flex items-center justify-center w-8 h-8 bg-white/20 rounded-[18.47px]">
+                    ➜
+                  </span>
+                </p>
               </div>
             </div>
 
@@ -384,7 +395,13 @@ export default function AboutPage() {
               />
               <div className="absolute bottom-0 left-0 w-full p-3 bg-gradient-to-t from-black/60 to-transparent text-white">
                 <h3 className="text-sm font-semibold">Lorem ipsum dolor sit amet</h3>
-                <p className="text-xs opacity-80">Facilisi quisque magna praesent.</p>
+                <p className="text-xs opacity-80">Facilisi quisque magna praesent.
+
+                  <span className="absolute bottom-4 right-4 flex items-center justify-center w-8 h-8 bg-white/20 rounded-[18.47px]">
+                    ➜
+                  </span>
+                  </p>
+
               </div>
             </div>
           </div>
