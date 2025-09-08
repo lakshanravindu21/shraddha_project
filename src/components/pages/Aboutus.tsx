@@ -15,6 +15,7 @@ import Image3 from "../asserts/images/aboutusImages/image3.jpg";
 import Header from "../BlackHeader";
 import Footer from "../Footer";
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
 
 
@@ -362,8 +363,8 @@ export default function AboutPage() {
                 <h3 className="text-lg font-semibold">Lorem ipsum dolor sit amet consectetur.</h3>
                 <p className="text-sm opacity-80">
                   Facilisi quisque magna praesent quisque arcu felis ornare in.
-                  <span className="absolute bottom-4 right-4 flex items-center justify-center w-8 h-8 bg-white/20 rounded-[18.47px]">
-                    ➜
+                  <span className="absolute bottom-4 right-4 flex items-center justify-center w-12 h-12 bg-gray-500 rounded-xl">
+                    <ArrowRight className="w-6 h-6 text-white -rotate-45" />
                   </span>
                 </p>
               </div>
@@ -379,8 +380,8 @@ export default function AboutPage() {
               <div className="absolute bottom-0 left-0 w-full p-3 bg-gradient-to-t from-black/60 to-transparent text-white">
                 <h3 className="text-sm font-semibold">Lorem ipsum dolor sit amet</h3>
                 <p className="text-xs opacity-80">Facilisi quisque magna praesent.
-                  <span className="absolute bottom-4 right-4 flex items-center justify-center w-8 h-8 bg-white/20 rounded-[18.47px]">
-                    ➜
+                  <span className="absolute bottom-4 right-4 flex items-center justify-center w-12 h-12 bg-gray-500 rounded-xl">
+                    <ArrowRight className="w-6 h-6 text-white -rotate-45" />
                   </span>
                 </p>
               </div>
@@ -397,8 +398,8 @@ export default function AboutPage() {
                 <h3 className="text-sm font-semibold">Lorem ipsum dolor sit amet</h3>
                 <p className="text-xs opacity-80">Facilisi quisque magna praesent.
 
-                  <span className="absolute bottom-4 right-4 flex items-center justify-center w-8 h-8 bg-white/20 rounded-[18.47px]">
-                    ➜
+                  <span className="absolute bottom-4 right-4 flex items-center justify-center w-12 h-12 bg-gray-500 rounded-xl">
+                    <ArrowRight className="w-6 h-6 text-white -rotate-45" />
                   </span>
                   </p>
 
