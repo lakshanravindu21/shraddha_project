@@ -4,9 +4,9 @@ import { MdCall } from 'react-icons/md'
 import Link from "next/link";
 
 const navigation = [
-    { name: 'Home', href: '/home', current: false },
+    { name: 'Home', href: '/', current: false },
     { name: 'About Us', href: '/About', current: false },
-    { name: 'Map', href: '#mps', current: false },
+    { name: 'Map', href: '/Map', current: false },
     { name: 'Contact Us', href: '/contact', current: false },
 ]
 

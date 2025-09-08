@@ -6,7 +6,7 @@ import Link from "next/link";
 const navigation = [
     { name: 'Home', href: '/', current: true },
     { name: 'About Us', href: '/About', current: false },
-    { name: 'Map', href: '/#mps', current: false }, // keep anchor if map is section on home
+    { name: 'Map', href: '/Map', current: false }, // keep anchor if map is section on home
     { name: 'Contact Us', href: '/contact', current: false },
 ]
 
