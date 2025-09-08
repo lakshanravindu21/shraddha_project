@@ -4,10 +4,10 @@ import { MdCall } from 'react-icons/md'
 import Link from "next/link";
 
 const navigation = [
-    { name: 'Home', href: '#home', current: true },
-    { name: 'About Us', href: '#about', current: false },
-    { name: 'Map', href: '#mps', current: false },
-    { name: 'Contact Us', href: '#contact-us', current: false },
+    { name: 'Home', href: '/', current: true },
+    { name: 'About Us', href: '/About', current: false },
+    { name: 'Map', href: '/#mps', current: false }, // keep anchor if map is section on home
+    { name: 'Contact Us', href: '/contact', current: false },
 ]
 
 interface NavigationItem {
@@ -26,7 +26,7 @@ const rightNavItemsDesign =
             <MdCall className='me-1' /> (+1) 840 841 25 69
         </button>
 
-        {/* Updated Contact Us button */}
+        {/* Contact Us button (whole button is clickable link) */}
         <Link href="/contact">
             <button className='bg-[#191D23] px-8 py-2 text-white rounded-[20px] font-[16px]'>
                 Contact Us
@@ -57,7 +57,7 @@ export default function Example() {
                             <div className="flex gap-[34px] items-center">
                                 {navigation.map((item) => (
                                     <div key={item.name} className="flex flex-col items-center">
-                                        <a
+                                        <Link
                                             href={item.href}
                                             aria-current={item.current ? 'page' : undefined}
                                             className={classNames(
@@ -78,7 +78,7 @@ export default function Example() {
                                                     borderRadius: '2px',
                                                 }}
                                             />
-                                        </a>
+                                        </Link>
                                     </div>
                                 ))}
                             </div>
@@ -105,7 +105,7 @@ export default function Example() {
                     {navigation.map((item) => (
                         <DisclosureButton
                             key={item.name}
-                            as="a"
+                            as={Link}
                             href={item.href}
                             aria-current={item.current ? 'page' : undefined}
                             className={classNames(

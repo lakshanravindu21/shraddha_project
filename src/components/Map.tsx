@@ -8,9 +8,9 @@ import {
   useMap,
 } from "react-leaflet";
 import L from "leaflet";
+import omnivore from "leaflet-omnivore"; // ✅ Typed import
 import { motion, AnimatePresence } from "framer-motion";
 import "leaflet/dist/leaflet.css";
-import * as omnivore from "leaflet-omnivore";
 import { FaMapMarkedAlt, FaBook, FaCircle } from "react-icons/fa";
 import { MdTempleHindu } from "react-icons/md";
 
@@ -180,7 +180,7 @@ const Map: React.FC<MapProps> = ({ searchFilters = null }) => {
       setKmlError(null);
 
       try {
-        kmlLayer = omnivore.kml("/cb_2024_us_state_500k.kml")
+        kmlLayer = omnivore.kml("/cb_2024_us_state_500k.kml") // ✅ Typed call
           .on("ready", function() {
             setLoadingKML(false);
             if (kmlLayer) {
@@ -195,7 +195,7 @@ const Map: React.FC<MapProps> = ({ searchFilters = null }) => {
             setKmlError("Failed to load KML boundaries.");
           });
 
-        kmlLayer.setStyle({
+        (kmlLayer as any).setStyle({
           color: "#1d4ed8",
           weight: 2,
           fillColor: "#3b82f6",
@@ -258,7 +258,7 @@ const Map: React.FC<MapProps> = ({ searchFilters = null }) => {
             Follow these steps to explore temples:
           </p>
           <div className="space-y-6">
-            {[
+            {[ 
               {
                 title: "Choose a State",
                 description:
